@@ -4,7 +4,7 @@ async function getList() {
   const res = await fetch(
     'https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textList.json',
     {
-      next: { revalidate: 10 },
+      cache: 'no-store',
     }
   );
   const data = await res.json();
@@ -15,14 +15,14 @@ export default async function TextList() {
   const textList = await getList();
 
   return (
-    <div className="max-w-3xl my-0 mx-auto">
+    <div className="max-w-2xl my-0 mx-auto">
       <h1 className="text-3xl font-bold my-4">Reading List</h1>
       <button
         type="button"
-        className="flex items-center py-2 px-3 rounded-lg font-bold bg-slate-100 hover:bg-slate-200 transition-colors duration-200 text-sm"
+        className="flex items-center py-2 px-3 rounded font-bold bg-gray-100 hover:bg-gray-200 transition-colors duration-200 text-sm"
       >
         <svg
-          className="mr-1"
+          className="mr-1 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
@@ -47,10 +47,10 @@ function Note({ note }: any) {
   return (
     <Link
       href={`/${id}`}
-      className="flex items-center text-slate-600 leading-7 underline decoration-slate-300 hover:bg-slate-100"
+      className="flex items-center rounded font-medium underline decoration-gray-300 hover:bg-gray-100"
     >
       <svg
-        className="mr-1 text-slate-600"
+        className="mr-1 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
