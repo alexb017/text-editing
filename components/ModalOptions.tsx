@@ -74,7 +74,7 @@ export default function ModalOptions({
     >
       <div className="flex flex-col relative">
         <button
-          className="flex items-center text-sm px-3 py-1 m-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100"
           onClick={() => handleDeleteClick(note.id)}
         >
           <svg
@@ -90,7 +90,7 @@ export default function ModalOptions({
         </button>
         <div className="h-px bg-gray-200 block"></div>
         <button
-          className="flex items-center justify-between text-sm px-3 py-1 m-1 rounded hover:bg-gray-100"
+          className="flex items-center justify-between text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100"
           onClick={() => setShowModal(!showModal)}
           ref={btnModalRef}
         >

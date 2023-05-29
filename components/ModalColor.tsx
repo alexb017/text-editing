@@ -81,74 +81,74 @@ export default function ModalColor({
         <p className="px-3 py-1 m-1 text-sm font-medium text-gray-500">Color</p>
         <button
           type="button"
-          className="text-gray-600 flex items-center text-sm px-3 py-1 mx-1 mt-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 mt-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-gray-600', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-gray-600 block mr-3 font-bold">Aa</div>
           Default
         </button>
         <button
           type="button"
-          className="text-gray-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-gray-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-gray-500  block mr-3 font-bold">Aa</div>
           Gray
         </button>
         <button
           type="button"
-          className="text-red-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-red-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-red-500  block mr-3 font-bold">Aa</div>
           Red
         </button>
         <button
           type="button"
-          className="text-orange-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-orange-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-orange-500 block mr-3 font-bold">Aa</div>
           Orange
         </button>
         <button
           type="button"
-          className="text-yellow-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-yellow-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-yellow-500 block mr-3 font-bold">Aa</div>
           Yellow
         </button>
         <button
           type="button"
-          className="text-green-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-green-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-green-500 block mr-3 font-bold">Aa</div>
           Green
         </button>
         <button
           type="button"
-          className="text-blue-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-blue-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-blue-500 block mr-3 font-bold">Aa</div>
           Blue
         </button>
         <button
           type="button"
-          className="text-purple-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-purple-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-purple-500 block mr-3 font-bold">Aa</div>
           Purple
         </button>
         <button
           type="button"
-          className="text-pink-500 flex items-center text-sm px-3 py-1 mx-1 mb-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 mb-1 rounded hover:bg-gray-100"
           onClick={() => handleTextColorClick('text-pink-500', note.id)}
         >
-          <div className="block mr-3 font-bold">Aa</div>
+          <div className="text-pink-500 block mr-3 font-bold">Aa</div>
           Pink
         </button>
         <div className="h-px bg-gray-200 block"></div>
@@ -157,7 +157,7 @@ export default function ModalColor({
         </p>
         <button
           type="button"
-          className="text-gray-600 flex items-center text-sm px-3 py-1 mx-1 mt-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 mt-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-white', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-white text-gray-500">
@@ -167,7 +167,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-gray-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-gray-200', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-gray-200 text-gray-500">
@@ -177,7 +177,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-red-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-red-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-red-100 text-gray-500">
@@ -187,7 +187,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-orange-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-orange-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-orange-100 text-gray-500">
@@ -197,7 +197,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-yellow-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-yellow-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-yellow-100 text-gray-500">
@@ -207,7 +207,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-green-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-green-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-green-100 text-gray-500">
@@ -217,7 +217,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-blue-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-blue-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-blue-100 text-gray-500">
@@ -227,7 +227,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-purple-500 flex items-center text-sm px-3 py-1 mx-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-purple-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-purple-100 text-gray-500">
@@ -237,7 +237,7 @@ export default function ModalColor({
         </button>
         <button
           type="button"
-          className="text-pink-500 flex items-center text-sm px-3 py-1 mx-1 mb-1 rounded hover:bg-gray-100"
+          className="flex items-center text-sm font-medium px-3 py-1 mx-1 mb-1 rounded hover:bg-gray-100"
           onClick={() => handleBackgroundColorClick('bg-pink-100', note.id)}
         >
           <div className="block mr-3 font-bold px-1 rounded bg-pink-100 text-gray-500">
