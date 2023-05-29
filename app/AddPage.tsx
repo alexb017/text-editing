@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 export default function AddPage() {
   const router = useRouter();
+
   function getRandomAlphanumeric(length: number) {
     let result = '';
     const characters =

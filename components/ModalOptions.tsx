@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import ModalColor from './ModalColor';
 
 export default function ModalOptions({
@@ -9,13 +10,17 @@ export default function ModalOptions({
 }: any) {
   const [showModal, setShowModal] = useState(false);
   const showModalRef = useRef<HTMLDivElement>(null);
+  const btnModalRef = useRef<HTMLButtonElement>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     function handleOutsideClick(event: any): void {
       if (
         showModal &&
         showModalRef.current &&
-        !showModalRef.current.contains(event.target)
+        !showModalRef.current.contains(event.target) &&
+        !btnModalRef.current?.contains(event.target)
       ) {
         setShowModal(false);
       }
@@ -26,7 +31,41 @@ export default function ModalOptions({
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [showModal]);
+  }, [showModal, showModalRef, btnModalRef]);
+
+  async function handleDeleteClick(noteId: string) {
+    const res = await fetch(
+      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textList.json`,
+      {
+        cache: 'no-store',
+      }
+    );
+    const data = await res.json();
+
+    // delete text
+    const updatedList = data.filter((note: any) => note.id !== noteId);
+
+    // update data after text is deleted
+    await fetch(
+      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textList.json`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedList),
+      }
+    );
+
+    await fetch(
+      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
+      {
+        method: 'DELETE',
+      }
+    );
+
+    router.refresh();
+  }
 
   return (
     <div
@@ -34,7 +73,10 @@ export default function ModalOptions({
       className="absolute top-7 right-0 bg-white rounded shadow-md w-60 z-10"
     >
       <div className="flex flex-col relative">
-        <button className="flex items-center text-sm px-3 py-1 m-1 rounded hover:bg-gray-100">
+        <button
+          className="flex items-center text-sm px-3 py-1 m-1 rounded hover:bg-gray-100"
+          onClick={() => handleDeleteClick(note.id)}
+        >
           <svg
             className="mr-2 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +92,7 @@ export default function ModalOptions({
         <button
           className="flex items-center justify-between text-sm px-3 py-1 m-1 rounded hover:bg-gray-100"
           onClick={() => setShowModal(!showModal)}
+          ref={btnModalRef}
         >
           <div className="flex items-center">
             <svg

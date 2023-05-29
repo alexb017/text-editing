@@ -11,16 +11,18 @@ export default function PageTitle({ note }: any): JSX.Element {
   const [showOptions, setShowOptions] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const showModalRef = useRef<HTMLDivElement>(null);
+  const btnModalRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function handleOutsideClick(event: any): void {
       if (
         showModal &&
         showModalRef.current &&
-        !showModalRef.current.contains(event.target)
+        !showModalRef.current.contains(event.target) &&
+        !btnModalRef.current?.contains(event.target)
       ) {
         setShowModal(false);
-        setBackgroundColor(note.backgroundColor);
+        setBackgroundColor(backgroundColor);
       }
     }
 
@@ -29,7 +31,7 @@ export default function PageTitle({ note }: any): JSX.Element {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [showModal]);
+  }, [showModal, showModalRef, btnModalRef, backgroundColor]);
 
   function toggleShowOptionsClick(event: MouseEvent<HTMLButtonElement>): void {
     event.preventDefault();
@@ -38,8 +40,6 @@ export default function PageTitle({ note }: any): JSX.Element {
 
     if (backgroundColor === 'bg-white') {
       setBackgroundColor('bg-gray-100');
-    } else {
-      setBackgroundColor(note.backgroundColor);
     }
   }
 
@@ -66,6 +66,7 @@ export default function PageTitle({ note }: any): JSX.Element {
             type="button"
             className="p-1 rounded hover:bg-gray-200 absolute right-1 z-10 text-gray-500"
             onClick={toggleShowOptionsClick}
+            ref={btnModalRef}
           >
             <svg
               className="fill-current"
