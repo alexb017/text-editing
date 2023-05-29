@@ -2,15 +2,17 @@ import Link from 'next/link';
 
 export default function Nav({
   title,
-  backgroundColor,
+  backgroundCover,
 }: {
   title: string;
-  backgroundColor: string;
+  backgroundCover: string;
 }) {
   let textColor = 'text-gray-500';
-  if (backgroundColor === 'bg-red-500') {
+  if (backgroundCover === 'bg-red-500') {
     textColor = 'text-gray-200';
-  } else if (backgroundColor === 'bg-orange-500') {
+  } else if (backgroundCover === 'bg-purple-500') {
+    textColor = 'text-gray-200';
+  } else if (backgroundCover === 'bg-orange-500') {
     textColor = 'text-gray-200';
   }
 

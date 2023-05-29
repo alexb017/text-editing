@@ -3,15 +3,15 @@
 import { useState } from 'react';
 
 export default function Cover({
-  backgroundColor,
+  backgroundCover,
 }: {
-  backgroundColor: string;
+  backgroundCover: string;
 }) {
   const [showBtn, setShowBtn] = useState(false);
 
   return (
     <div
-      className={`${backgroundColor} w-full h-80 p-2`}
+      className={`${backgroundCover} w-full h-80 p-2`}
       onMouseEnter={() => setShowBtn(true)}
       onMouseLeave={() => setShowBtn(false)}
     >
