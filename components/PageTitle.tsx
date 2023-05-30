@@ -22,7 +22,7 @@ export default function PageTitle({ note }: any): JSX.Element {
         !btnModalRef.current?.contains(event.target)
       ) {
         setShowModal(false);
-        setBackgroundColor(backgroundColor);
+        setBackgroundColor(note.backgroundColor);
       }
     }
 

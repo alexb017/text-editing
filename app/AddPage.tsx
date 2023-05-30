@@ -41,7 +41,7 @@ export default function AddPage() {
       id: pageId,
       title: 'Untitled',
       textColor: '',
-      backgroundColor: '',
+      backgroundColor: 'bg-white',
     };
     existingData.push(newData);
 
@@ -67,7 +67,7 @@ export default function AddPage() {
           id: pageId,
           title: 'Untitled',
           textColor: '',
-          backgroundColor: '',
+          backgroundColor: 'bg-white',
           backgroundCover: '',
           content: '',
         }),
