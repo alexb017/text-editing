@@ -1,6 +1,5 @@
-import AddCover from './AddCover';
-import Cover from '../../components/Cover';
 import Nav from '../../components/Nav';
+import WrapCover from './WrapCover';
 
 async function getTextListDetails(noteId: string) {
   const res = await fetch(
@@ -22,13 +21,9 @@ export default async function NotePage({ params }: any) {
 
   return (
     <div className="relative">
-      <Nav title={details.title} backgroundCover={details.backgroundCover} />
-      {details.backgroundCover && (
-        <Cover backgroundCover={details.backgroundCover} />
-      )}
+      <WrapCover note={details} />
       <div className="max-w-2xl my-0 mx-auto">
-        <div className={`mb-4 ${details.backgroundCover ? 'pt-4' : 'pt-32'}`}>
-          <AddCover />
+        <div>
           <h1 className="text-3xl font-bold">{details.title}</h1>
           <div
             className="outline-none focus:outline-none"

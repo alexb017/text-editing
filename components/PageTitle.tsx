@@ -2,26 +2,26 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef, MouseEvent } from 'react';
-import ModalOptions from './ModalOptions';
+import ModalOptions from './DropdownOptions';
 
 export default function PageTitle({ note }: any): JSX.Element {
   const [textColor, setTextColor] = useState(note.textColor);
   const [backgroundColor, setBackgroundColor] = useState(note.backgroundColor);
   const { id, title } = note;
   const [showOptions, setShowOptions] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const showModalRef = useRef<HTMLDivElement>(null);
-  const btnModalRef = useRef<HTMLButtonElement>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const showDropdownRef = useRef<HTMLDivElement>(null);
+  const btnDropdownRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function handleOutsideClick(event: any): void {
       if (
-        showModal &&
-        showModalRef.current &&
-        !showModalRef.current.contains(event.target) &&
-        !btnModalRef.current?.contains(event.target)
+        showDropdown &&
+        showDropdownRef.current &&
+        !showDropdownRef.current.contains(event.target) &&
+        !btnDropdownRef.current?.contains(event.target)
       ) {
-        setShowModal(false);
+        setShowDropdown(false);
         setBackgroundColor(note.backgroundColor);
       }
     }
@@ -31,12 +31,12 @@ export default function PageTitle({ note }: any): JSX.Element {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [showModal, showModalRef, btnModalRef, backgroundColor]);
+  }, [showDropdown, showDropdownRef, btnDropdownRef, backgroundColor]);
 
   function toggleShowOptionsClick(event: MouseEvent<HTMLButtonElement>): void {
     event.preventDefault();
     event.stopPropagation();
-    setShowModal(!showModal);
+    setShowDropdown(!showDropdown);
 
     if (backgroundColor === 'bg-white') {
       setBackgroundColor('bg-gray-100');
@@ -66,7 +66,7 @@ export default function PageTitle({ note }: any): JSX.Element {
             type="button"
             className="p-1 rounded hover:bg-gray-200 absolute right-1 z-10 text-gray-500"
             onClick={toggleShowOptionsClick}
-            ref={btnModalRef}
+            ref={btnDropdownRef}
           >
             <svg
               className="fill-current"
@@ -80,9 +80,9 @@ export default function PageTitle({ note }: any): JSX.Element {
           </button>
         )}
       </Link>
-      {showModal && (
+      {showDropdown && (
         <ModalOptions
-          onShowModalRef={showModalRef}
+          onShowDropdownRef={showDropdownRef}
           onTextColorChange={setTextColor}
           onBackgroundColorChange={setBackgroundColor}
           note={note}

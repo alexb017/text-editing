@@ -1,28 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import ModalColor from './ModalColor';
+import ModalColor from './DropdownColor';
 
 export default function ModalOptions({
-  onShowModalRef,
+  onShowDropdownRef,
   onTextColorChange,
   onBackgroundColorChange,
   note,
 }: any) {
-  const [showModal, setShowModal] = useState(false);
-  const showModalRef = useRef<HTMLDivElement>(null);
-  const btnModalRef = useRef<HTMLButtonElement>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const showDropdownRef = useRef<HTMLDivElement>(null);
+  const btnDropdownRef = useRef<HTMLButtonElement>(null);
 
   const router = useRouter();
 
   useEffect(() => {
     function handleOutsideClick(event: any): void {
       if (
-        showModal &&
-        showModalRef.current &&
-        !showModalRef.current.contains(event.target) &&
-        !btnModalRef.current?.contains(event.target)
+        showDropdown &&
+        showDropdownRef.current &&
+        !showDropdownRef.current.contains(event.target) &&
+        !btnDropdownRef.current?.contains(event.target)
       ) {
-        setShowModal(false);
+        setShowDropdown(false);
       }
     }
 
@@ -31,7 +31,7 @@ export default function ModalOptions({
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, [showModal, showModalRef, btnModalRef]);
+  }, [showDropdown, showDropdownRef, btnDropdownRef]);
 
   async function handleDeleteClick(noteId: string) {
     const res = await fetch(
@@ -69,7 +69,7 @@ export default function ModalOptions({
 
   return (
     <div
-      ref={onShowModalRef}
+      ref={onShowDropdownRef}
       className="absolute top-7 right-0 bg-white rounded shadow-md w-60 z-10"
     >
       <div className="flex flex-col relative">
@@ -91,8 +91,8 @@ export default function ModalOptions({
         <div className="h-px bg-gray-200 block"></div>
         <button
           className="flex items-center justify-between text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100"
-          onClick={() => setShowModal(!showModal)}
-          ref={btnModalRef}
+          onClick={() => setShowDropdown(!showDropdown)}
+          ref={btnDropdownRef}
         >
           <div className="flex items-center">
             <svg
@@ -116,9 +116,9 @@ export default function ModalOptions({
             <path d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32Z" />
           </svg>
         </button>
-        {showModal && (
+        {showDropdown && (
           <ModalColor
-            onShowModalRef={showModalRef}
+            onShowDropdownRef={showDropdownRef}
             onTextColorChange={onTextColorChange}
             onBackgroundColorChange={onBackgroundColorChange}
             note={note}

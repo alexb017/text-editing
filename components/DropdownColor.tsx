@@ -1,5 +1,5 @@
 export default function ModalColor({
-  onShowModalRef,
+  onShowDropdownRef,
   onTextColorChange,
   onBackgroundColorChange,
   note,
@@ -75,7 +75,7 @@ export default function ModalColor({
   return (
     <div
       className="absolute top-0 -right-56 bg-white rounded shadow-md w-60 z-20"
-      ref={onShowModalRef}
+      ref={onShowDropdownRef}
     >
       <div className="flex flex-col">
         <p className="px-3 py-1 m-1 text-sm font-medium text-gray-500">Color</p>

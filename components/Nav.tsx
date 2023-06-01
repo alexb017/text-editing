@@ -7,17 +7,30 @@ export default function Nav({
   title: string;
   backgroundCover: string;
 }) {
-  let textColor = 'text-gray-500';
-  if (backgroundCover === 'bg-red-500') {
-    textColor = 'text-gray-200';
-  } else if (backgroundCover === 'bg-purple-500') {
-    textColor = 'text-gray-200';
-  } else if (backgroundCover === 'bg-orange-500') {
-    textColor = 'text-gray-200';
+  let textColor;
+
+  switch (backgroundCover) {
+    case 'bg-gray-500':
+      textColor = 'text-gray-200';
+      break;
+    case 'bg-red-500':
+      textColor = 'text-gray-200';
+      break;
+    case 'bg-orange-500':
+      textColor = 'text-gray-200';
+      break;
+    case 'bg-blue-500':
+      textColor = 'text-gray-200';
+      break;
+    case 'bg-purple-500':
+      textColor = 'text-gray-200';
+      break;
+    default:
+      textColor = 'text-gray-500';
   }
 
   return (
-    <nav className="absolute top-4 w-full">
+    <nav className="fixed top-4 w-full z-10">
       <div className="max-w-2xl my-0 mx-auto">
         <div className="flex items-center">
           <Link
