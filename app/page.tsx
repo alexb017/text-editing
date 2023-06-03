@@ -18,7 +18,7 @@ export default async function TextList() {
   return (
     <div className="max-w-2xl my-0 mx-auto">
       <h1 className="text-3xl font-bold my-4">Reading List</h1>
-      <AddPage />
+      <AddPage data={textList} />
       <div className="flex flex-col my-8">
         {textList.map((note) => {
           return <PageTitle key={note.id} note={note} />;

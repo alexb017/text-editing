@@ -28,13 +28,10 @@ export default function AddCover({ onBgCover, note }: any) {
   }, [showDropdown, showDropdownRef, btnDropdownRef]);
 
   async function handleBackgroundCoverClick(color: string, noteId: string) {
-    const res = await fetch(
-      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
-      {
-        next: { revalidate: 5 },
-      }
-    );
-    const data = await res.json();
+    // const res = await fetch(
+    //   `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`
+    // );
+    // const data = await res.json();
 
     await fetch(
       `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
@@ -43,7 +40,7 @@ export default function AddCover({ onBgCover, note }: any) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...data, backgroundCover: color }),
+        body: JSON.stringify({ ...note, backgroundCover: color }),
       }
     );
 
@@ -60,7 +57,9 @@ export default function AddCover({ onBgCover, note }: any) {
       {showBtn && (
         <button
           type="button"
-          className="flex items-center text-xs py-2 px-3 rounded hover:bg-gray-200"
+          className={`flex items-center text-xs py-2 px-3 rounded hover:bg-gray-200 ${
+            showDropdown ? 'bg-gray-200' : ''
+          }`}
           onClick={() => setShowDropdown(!showDropdown)}
           ref={btnDropdownRef}
         >
@@ -82,18 +81,9 @@ export default function AddCover({ onBgCover, note }: any) {
           ref={showDropdownRef}
         >
           <div className="flex flex-col relative">
-            <button className="flex items-center text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100">
-              <svg
-                className="mr-2 fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 256 256"
-              >
-                <path d="M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16ZM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Z" />
-              </svg>
-              Remove Cover
-            </button>
+            <p className="px-3 py-1 m-1 text-sm font-medium text-gray-500">
+              Background
+            </p>
             <div className="h-px bg-gray-200 block"></div>
             <button
               type="button"

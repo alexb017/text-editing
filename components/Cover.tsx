@@ -36,13 +36,10 @@ export default function Cover({
   }, [showDropdown, showDropdownRef, btnDropdownRef]);
 
   async function handleBackgroundCoverClick(color: string, noteId: string) {
-    const res = await fetch(
-      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
-      {
-        next: { revalidate: 5 },
-      }
-    );
-    const data = await res.json();
+    // const res = await fetch(
+    //   `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`
+    // );
+    // const data = await res.json();
 
     await fetch(
       `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
@@ -51,11 +48,32 @@ export default function Cover({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...data, backgroundCover: color }),
+        body: JSON.stringify({ ...note, backgroundCover: color }),
       }
     );
 
     onBgCover(color);
+    router.refresh();
+  }
+
+  async function handleDeleteCoverClick(noteId: string) {
+    // const res = await fetch(
+    //   `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`
+    // );
+    // const data = await res.json();
+
+    await fetch(
+      `https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textListDetails/id${noteId}.json`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...note, backgroundCover: '' }),
+      }
+    );
+
+    onBgCover('');
     router.refresh();
   }
 
@@ -82,7 +100,10 @@ export default function Cover({
             ref={showDropdownRef}
           >
             <div className="flex flex-col relative">
-              <button className="flex items-center text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100">
+              <button
+                className="flex items-center text-sm font-medium px-3 py-1 m-1 rounded hover:bg-gray-100"
+                onClick={() => handleDeleteCoverClick(note.id)}
+              >
                 <svg
                   className="mr-2 fill-current"
                   xmlns="http://www.w3.org/2000/svg"

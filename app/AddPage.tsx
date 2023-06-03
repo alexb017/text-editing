@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-export default function AddPage() {
+export default function AddPage({ data }: any) {
   const router = useRouter();
 
   function getRandomAlphanumeric(length: number) {
@@ -28,10 +28,10 @@ export default function AddPage() {
       backgroundColor: string;
     }
 
-    const res = await fetch(
-      'https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textList.json'
-    );
-    const data: NewData[] | null = await res.json();
+    // const res = await fetch(
+    //   'https://text-editing-6fdb7-default-rtdb.europe-west1.firebasedatabase.app/textList.json'
+    // );
+    // const data: NewData[] | null = await res.json();
 
     // Ensure array exists even if it's initially empty
     const existingData: NewData[] = data || [];
